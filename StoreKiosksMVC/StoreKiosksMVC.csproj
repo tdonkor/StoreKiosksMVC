@@ -149,9 +149,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KiosksController.cs" />
+    <Compile Include="Controllers\StoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801251632474_InitialCreate.cs" />
+    <Compile Include="Migrations\201801251632474_InitialCreate.Designer.cs">
+      <DependentUpon>201801251632474_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801301150077_DataAnnotations.cs" />
+    <Compile Include="Migrations\201801301150077_DataAnnotations.Designer.cs">
+      <DependentUpon>201801301150077_DataAnnotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Kiosk.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\StoreKiosksDB.cs" />
@@ -160,6 +171,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\AccrelecBlk.PNG" />
+    <Content Include="Content\Images\AcrelecLogo.jpg" />
+    <Content Include="Content\Images\logo acrelec cmjn hd.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -180,7 +194,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -194,6 +210,16 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Stores\Create.cshtml" />
+    <Content Include="Views\Stores\Delete.cshtml" />
+    <Content Include="Views\Stores\Details.cshtml" />
+    <Content Include="Views\Stores\Edit.cshtml" />
+    <Content Include="Views\Stores\Index.cshtml" />
+    <Content Include="Views\Kiosks\Create.cshtml" />
+    <Content Include="Views\Kiosks\Delete.cshtml" />
+    <Content Include="Views\Kiosks\Details.cshtml" />
+    <Content Include="Views\Kiosks\Edit.cshtml" />
+    <Content Include="Views\Kiosks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -210,6 +236,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801251632474_InitialCreate.resx">
+      <DependentUpon>201801251632474_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801301150077_DataAnnotations.resx">
+      <DependentUpon>201801301150077_DataAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

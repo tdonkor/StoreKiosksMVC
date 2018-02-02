@@ -8,6 +8,11 @@ namespace StoreKiosksMVC.Models
 {
     public class StoreKiosksDB : DbContext
     {
+        public StoreKiosksDB() : base("name=StoreKiosksDB")
+        {
+
+        }
+ 
         public DbSet<Store> Stores { get; set; }
         public DbSet<Kiosk> Kiosks { get; set; }
     }
