@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details for Store: @(ViewData["StoreName"])</h2>
+<h2>Details for Store: @(ViewData["StoreName"].ToString().ToUpper())</h2>
 
 <div>
     <hr />
@@ -16,6 +16,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.StoreName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer)
         </dd>
 
         <dt>
@@ -73,6 +80,13 @@
         <dd>
             @Html.DisplayFor(model => model.City)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.County)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Postcode)
@@ -86,7 +100,7 @@
 </div>
 <div>
     <br />
-    <img src="~/Content/Images/@(ViewData["StoreName"]).png" alt="store Image" width="600px" />
+    <img src="~/Content/Images/@(ViewData["StoreName"].ToString().ToUpper()).png" alt="store Image" width="600px" />
     <br /> 
 </div>
 <p>

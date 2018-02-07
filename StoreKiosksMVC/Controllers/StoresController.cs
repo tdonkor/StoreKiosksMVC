@@ -16,9 +16,18 @@ namespace StoreKiosksMVC.Controllers
 
 
         // GET: Stores
-        public ActionResult Index()
+        public ActionResult Index(string searchTerm)
         {
-            return View(db.Stores.ToList());
+            var model =
+                 from stores in db.Stores
+                orderby stores.StoreName ascending
+            where (searchTerm == null || stores.StoreName.StartsWith(searchTerm))
+                 select stores;
+        
+
+            return View(model);
+
+            //return View(db.Stores.ToList());
         }
 
         // GET: Stores/Details/5
@@ -30,7 +39,7 @@ namespace StoreKiosksMVC.Controllers
             }
             Store store = db.Stores.Find(id);
             //ViewBag.StoreName = store.StoreName;
-            ViewData["StoreName"] = store.StoreName;
+            ViewData["StoreName"] = store.StoreName.ToUpper();
 
             if (store == null)
             {
@@ -50,7 +59,7 @@ namespace StoreKiosksMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StoreName,StoreNumber,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,Postcode")] Store store)
+        public ActionResult Create([Bind(Include = "Id,StoreName,Customer,StoreNumber,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,County,Postcode")] Store store)
         {
             // trim any spaces from the storeName
             store.StoreName = TrimString(store.StoreName);
@@ -89,7 +98,7 @@ namespace StoreKiosksMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StoreName,StoreNumber,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,Postcode")] Store store)
+        public ActionResult Edit([Bind(Include = "Id,StoreName,Customer,StoreNumber,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,County,Postcode")] Store store)
         {
             if (ModelState.IsValid)
             {
@@ -111,7 +120,7 @@ namespace StoreKiosksMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Store store = db.Stores.Find(id);
-            ViewData["StoreName"] = store.StoreName;
+            ViewData["StoreName"] = store.StoreName.ToUpper();
             if (store == null)
             {
                 return HttpNotFound();

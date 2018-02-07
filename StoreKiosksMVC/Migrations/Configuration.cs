@@ -9,7 +9,7 @@ namespace StoreKiosksMVC.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "StoreKiosksMVC.Models.StoreKiosksDB";
         }
 

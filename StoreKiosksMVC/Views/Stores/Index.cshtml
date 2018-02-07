@@ -7,83 +7,93 @@
 
 <h2>List of Stores</h2>
 
-<p>
-    @Html.ActionLink("Create a new Store", "Create")
-</p>
+<form method="get">
+    <input type="search" name= "searchTerm" />
+    <input type ="submit" value="Search by Store"/>
+</form>
+<br /><br />
+
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayName("Store Id")
-        </th>
+        </th>*@
         <th>
             @Html.DisplayName("Store Name")
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.StoreNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GoLiveDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KioskNUCIP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Postcode)
-        </th>*@
+                @Html.DisplayNameFor(model => model.StoreNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoLiveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KioskNUCIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StoreName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.StoreNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoLiveDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KioskNUCIP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postcode)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit the Store", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Store Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Store Kiosks", "Index", "Kiosks", new { storeId = item.Id }, null) |
-            @Html.ActionLink("Delete the Store", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.StoreNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoLiveDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KioskNUCIP)
+                </td>
+                <td>#
+                    ###
+
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Postcode)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit Store", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Store Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Store Kiosks", "Index", "Kiosks", new { storeId = item.Id }, null) |
+                @Html.ActionLink("Delete Store", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        
+    }
 
 </table>
+<p>
+    @Html.ActionLink("Create a new Store", "Create")
+</p>
