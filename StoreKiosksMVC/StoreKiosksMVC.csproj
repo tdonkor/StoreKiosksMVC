@@ -163,6 +163,7 @@
       <DependentUpon>201801301150077_DataAnnotations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\Kiosk.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\StoreKiosksDB.cs" />
