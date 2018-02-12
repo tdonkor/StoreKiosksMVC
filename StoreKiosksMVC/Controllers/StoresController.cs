@@ -18,9 +18,9 @@ namespace StoreKiosksMVC.Controllers
         // GET: Stores
         public ActionResult Index(string cust)
         {
-            //use the Customer value in other controllers
-            ViewData["Customer"] = cust;
-          
+         
+            TempData["Customer"] = cust;
+
             var model =
                  from stores in db.Stores
                      //  orderby stores.StoreName ascending
@@ -56,7 +56,8 @@ namespace StoreKiosksMVC.Controllers
         // GET: Stores/Create
         public ActionResult Create()
         {
-           // this.TempData["Customer"] = TempData["Customer"];
+
+            ViewData["Customer"] = TempData["Customer"];
             return View();
         }
 
@@ -75,7 +76,7 @@ namespace StoreKiosksMVC.Controllers
             {
                 db.Stores.Add(store);
                 db.SaveChanges();
-                return RedirectToAction($"Index/{store.Customer}");
+                return RedirectToAction($"Index", new {cust = store.Customer});
             }
 
             return View(store);
@@ -114,7 +115,7 @@ namespace StoreKiosksMVC.Controllers
 
                 db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction($"Index", new { cust = store.Customer });
             }
             return View(store);
         }
@@ -127,7 +128,7 @@ namespace StoreKiosksMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Store store = db.Stores.Find(id);
-            ViewData["StoreName"] = store.StoreName.ToUpper();
+            ViewData["StoreName"] = store.StoreName;
             ViewData["Customer"] = store.Customer;
 
             if (store == null)
@@ -145,7 +146,7 @@ namespace StoreKiosksMVC.Controllers
             Store store = db.Stores.Find(id);
             db.Stores.Remove(store);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction($"Index", new {cust = store.Customer});
         }
 
         protected override void Dispose(bool disposing)
