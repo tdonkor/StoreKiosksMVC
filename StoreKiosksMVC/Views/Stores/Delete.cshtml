@@ -92,7 +92,7 @@
         <br />
         <input type="submit" value="Delete" class="btn btn-default" />
         <br /> <br />
-        @Html.ActionLink("Back to the list of Stores", "Index")
+        @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
     </div>
     }
 </div>

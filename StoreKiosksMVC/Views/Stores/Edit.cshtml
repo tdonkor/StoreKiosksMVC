@@ -112,7 +112,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to the list of Stores", "Index")
+    @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
 </div>
 
 @section Scripts {

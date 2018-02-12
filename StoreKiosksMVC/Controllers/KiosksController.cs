@@ -13,30 +13,23 @@ namespace StoreKiosksMVC.Controllers
     public class KiosksController : Controller
     {
         private StoreKiosksDB db = new StoreKiosksDB();
-        //string storeIdStr;
 
-
-        //private string GetStoreId(string urlQuery)
-        //{
-        //    //should return the ?storeNum=*****
-        //    string storeIdstr = urlQuery.Trim();
-        //    //return the string after the '='
-        //    string storeId = storeIdstr.Substring((storeIdstr.IndexOf('=')) + 1);
-
-        //    return storeId;
-        //}
 
         // GET: Kiosks
-        public ActionResult Index(int? storeId)
+        public ActionResult Index( int? storeId, string cust)
         {
             if (storeId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+           
+
             var kiosks = from kiosk in db.Kiosks.ToList()
                          where kiosk.StoreId == storeId
                          select kiosk;
+            
+
 
             if (kiosks == null)
             {
@@ -45,8 +38,9 @@ namespace StoreKiosksMVC.Controllers
 
             //use the storeId value in other controllers
             TempData["StoreId"] = storeId;
+            TempData["Customer"] = cust;
 
-           return View(kiosks);
+            return View(kiosks);
 
            // return View(db.Kiosks.ToList());
         }
@@ -70,11 +64,8 @@ namespace StoreKiosksMVC.Controllers
         public ActionResult Create()
         {
             int storeId = Convert.ToInt32(TempData["StoreId"]);
-
-            //storeIdStr = GetStoreId(this.Request.UrlReferrer.Query);
-            //ViewBag.StoreId = Convert.ToInt32(storeIdStr);
-            //ViewData["StoreId"] = Convert.ToInt32(storeIdStr);
             ViewData["StoreId"] = storeId;
+         
 
             return View();
         }
@@ -84,7 +75,7 @@ namespace StoreKiosksMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KioskId,StoreId,SerialNumber,KioskName,IpAddress,EFTSerialNumber,TPVNumber")] Kiosk kiosk)
+        public ActionResult Create([Bind(Include = "Id,KioskId,StoreId,Customer,SerialNumber,KioskName,IpAddress,EFTSerialNumber,TPVNumber")] Kiosk kiosk)
         {
             //kiosk.Id = kiosk.KioskId;
 
@@ -93,6 +84,7 @@ namespace StoreKiosksMVC.Controllers
             //{
             //    return RedirectToAction("Index", "Stores");
             //}
+            ViewData["Customer"] = kiosk.Customer;
             if (ModelState.IsValid)
             {
                 db.Kiosks.Add(kiosk);
@@ -111,7 +103,9 @@ namespace StoreKiosksMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Kiosk kiosk = db.Kiosks.Find(id);
-            
+
+            ViewData["Customer"] = kiosk.Customer;
+
             if (kiosk == null)
             {
                 return HttpNotFound();
@@ -126,7 +120,7 @@ namespace StoreKiosksMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,KioskId,StoreId,SerialNumber,KioskName,IpAddress,EFTSerialNumber,TPVNumber")] Kiosk kiosk)
+        public ActionResult Edit([Bind(Include = "Id,KioskId,StoreId,Customer,SerialNumber,KioskName,IpAddress,EFTSerialNumber,TPVNumber")] Kiosk kiosk)
         {
             if (ModelState.IsValid)
             {
@@ -150,6 +144,7 @@ namespace StoreKiosksMVC.Controllers
                 return HttpNotFound();
             }
             ViewData["StoreId"] = kiosk.StoreId;
+            ViewData["Customer"] = kiosk.Customer;
             return View(kiosk);
         }
 

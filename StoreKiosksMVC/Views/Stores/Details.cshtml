@@ -107,7 +107,7 @@
     <br />
     <ul>
         <li>@Html.ActionLink("Edit Store Details", "Edit", new { id = Model.Id })</li>
-        <li>@Html.ActionLink("Back to the list of Stores", "Index")</li>
+        @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
     </ul>
     <br />
   

@@ -10,6 +10,6 @@ namespace StoreKiosksMVC.Models
     {
         public int Id { get; set; }
         [StringLength(100, MinimumLength = 1)]
-        public int CustomerName { get; set; }
+        public string Customer { get; set; }
     }
 }

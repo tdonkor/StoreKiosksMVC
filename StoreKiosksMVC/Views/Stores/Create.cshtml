@@ -26,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Customer, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Customer, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Customer, new { htmlAttributes = new { @Value = TempData["Customer"] } })
             @Html.ValidationMessageFor(model => model.Customer, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -112,7 +112,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to the list of Stores", "Index")
+    @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"]}, null)  
 </div>
 
 @section Scripts {

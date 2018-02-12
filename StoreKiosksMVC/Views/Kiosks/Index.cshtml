@@ -69,5 +69,6 @@
 
 </table>
 <div>
-    @Html.ActionLink("Back to the List of Stores", "Index", "Stores")
+
+    @Html.ActionLink("Back to Store", "Index", "Stores", new { cust = TempData["Customer"] }, null)
 </div>

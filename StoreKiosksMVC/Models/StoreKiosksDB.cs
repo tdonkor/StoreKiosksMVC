@@ -12,8 +12,11 @@ namespace StoreKiosksMVC.Models
         {
 
         }
- 
+
+        public static string cust { get; internal set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Kiosk> Kiosks { get; set; }
+        public DbSet<Customers> Customers { get; set; }
+
     }
 }

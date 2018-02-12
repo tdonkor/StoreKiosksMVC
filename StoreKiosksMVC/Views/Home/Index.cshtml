@@ -1,29 +1,46 @@
-﻿@{
+﻿@model IEnumerable<StoreKiosksMVC.Models.Customers>
+
+@{
     ViewBag.Title = "Acrelec Kiosk Locator";
 }
 
 <div class="jumbotron">
-   
+
     <h1>Acrelec Kiosk Locator</h1>
 
     <!-- <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
+</div>
+<div>
+    <h2>Customer List</h2>
+
+    <table class="table">
+        
+        @foreach (var item in Model)
+       {
+            <tr>
+                <td>
+                   
+                    @Html.ActionLink(item.Customer, "Index","Stores", new { cust = item.Customer }, null)
+                </td>
+          
+                <td>
+                    @Html.ActionLink("Edit Customer", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete Customer", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+         }
+
+    </table>
 </div>
 
 <div class="row">
     <div class="col-md-4">
         @*<h2>Stores</h2>*@
 
-        <p><a class="btn btn-default" href="/Stores/Index"><b>List of Stores &raquo;</b></a></p>
+        @*<p><a class="btn btn-default" href="/Stores/Index"><b>List of Stores &raquo;</b></a></p>*@
+        <br />
+         @Html.ActionLink("Add a new Customer", "Create")
     </div>
 
-    <!--<div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div> -->
 </div> 

@@ -16,15 +16,19 @@ namespace StoreKiosksMVC.Controllers
 
 
         // GET: Stores
-        public ActionResult Index(string searchTerm)
+        public ActionResult Index(string cust)
         {
+            //use the Customer value in other controllers
+            ViewData["Customer"] = cust;
+          
             var model =
                  from stores in db.Stores
-                orderby stores.StoreName ascending
-            where (searchTerm == null || stores.StoreName.StartsWith(searchTerm))
+                     //  orderby stores.StoreName ascending
+                     // where (Id == null || stores.Customer.StartsWith(Id))
+                 where stores.Customer == cust
                  select stores;
-        
 
+            
             return View(model);
 
             //return View(db.Stores.ToList());
@@ -38,8 +42,9 @@ namespace StoreKiosksMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Store store = db.Stores.Find(id);
-            //ViewBag.StoreName = store.StoreName;
+         
             ViewData["StoreName"] = store.StoreName.ToUpper();
+            ViewData["Customer"] = store.Customer;
 
             if (store == null)
             {
@@ -51,6 +56,7 @@ namespace StoreKiosksMVC.Controllers
         // GET: Stores/Create
         public ActionResult Create()
         {
+           // this.TempData["Customer"] = TempData["Customer"];
             return View();
         }
 
@@ -63,17 +69,18 @@ namespace StoreKiosksMVC.Controllers
         {
             // trim any spaces from the storeName
             store.StoreName = TrimString(store.StoreName);
+            ViewData["Customer"] = store.Customer;
 
             if (ModelState.IsValid)
             {
                 db.Stores.Add(store);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction($"Index/{store.Customer}");
             }
 
             return View(store);
         }
-
+        
         // GET: Stores/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -83,8 +90,7 @@ namespace StoreKiosksMVC.Controllers
             }
             Store store = db.Stores.Find(id);
 
-           
-
+            ViewData["Customer"] = store.Customer;
             ViewData["StoreName"] = store.StoreName;
             if (store == null)
             {
@@ -104,6 +110,7 @@ namespace StoreKiosksMVC.Controllers
             {
                 // trim any spaces from the storeName
                 store.StoreName = TrimString(store.StoreName);
+                ViewData["Customers"] = store.Customer;
 
                 db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
@@ -121,6 +128,8 @@ namespace StoreKiosksMVC.Controllers
             }
             Store store = db.Stores.Find(id);
             ViewData["StoreName"] = store.StoreName.ToUpper();
+            ViewData["Customer"] = store.Customer;
+
             if (store == null)
             {
                 return HttpNotFound();
