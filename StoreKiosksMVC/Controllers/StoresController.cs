@@ -54,10 +54,10 @@ namespace StoreKiosksMVC.Controllers
         }
 
         // GET: Stores/Create
-        public ActionResult Create()
+        public ActionResult Create(string cust)
         {
 
-            ViewData["Customer"] = TempData["Customer"];
+            ViewData["Customer"] = cust;
             return View();
         }
 
@@ -70,7 +70,7 @@ namespace StoreKiosksMVC.Controllers
         {
             // trim any spaces from the storeName
             store.StoreName = TrimString(store.StoreName);
-            ViewData["Customer"] = store.Customer;
+            TempData["Customer"] = store.Customer;
 
             if (ModelState.IsValid)
             {

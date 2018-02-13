@@ -89,7 +89,7 @@
 }
 
     <div>
-        @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = ViewData["StoreId"] })
+        @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = Model.StoreId, @cust = Model.Customer }, null)
     </div>
 
 @section Scripts {

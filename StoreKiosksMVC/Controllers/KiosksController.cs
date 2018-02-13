@@ -18,17 +18,15 @@ namespace StoreKiosksMVC.Controllers
         // GET: Kiosks
         public ActionResult Index( int? storeId, string cust)
         {
-            if (storeId == null)
+            if (storeId == null || cust == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-           
 
             var kiosks = from kiosk in db.Kiosks.ToList()
                          where kiosk.StoreId == storeId
                          select kiosk;
-            
 
 
             if (kiosks == null)
@@ -52,6 +50,8 @@ namespace StoreKiosksMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+
             Kiosk kiosk = db.Kiosks.Find(id);
             if (kiosk == null)
             {
@@ -61,11 +61,23 @@ namespace StoreKiosksMVC.Controllers
         }
 
         // GET: Kiosks/Create
-        public ActionResult Create()
+        public ActionResult Create(string cust)
         {
             int storeId = Convert.ToInt32(TempData["StoreId"]);
             ViewData["StoreId"] = storeId;
-         
+            ViewData["Customer"] = cust;
+            //Kiosk kiosk = db.Kiosks.Find(storeId);
+
+
+            //if (kiosk == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+
+            //ViewData["Customer"] = kiosk.Customer;
+            //TempData["Customer"] = kiosk.Customer;
+
 
             return View();
         }
@@ -89,7 +101,7 @@ namespace StoreKiosksMVC.Controllers
             {
                 db.Kiosks.Add(kiosk);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId });
+                return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId, cust = kiosk.Customer});
             }
 
             return View(kiosk);
@@ -126,7 +138,7 @@ namespace StoreKiosksMVC.Controllers
             {
                 db.Entry(kiosk).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId });
+                return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId, cust = kiosk.Customer });
             }
             return View(kiosk);
         }
@@ -156,7 +168,7 @@ namespace StoreKiosksMVC.Controllers
             Kiosk kiosk = db.Kiosks.Find(id);
             db.Kiosks.Remove(kiosk);
             db.SaveChanges();
-            return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId });
+            return RedirectToAction("Index", "Kiosks", new { storeId = kiosk.StoreId , cust = kiosk.Customer});
         }
 
         protected override void Dispose(bool disposing)

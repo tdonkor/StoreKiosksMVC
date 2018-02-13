@@ -65,7 +65,7 @@
 
 </table>
 <p>
-    @Html.ActionLink("Create a new Store", "Create")
+    @Html.ActionLink("Create a new Store", "Create", new { cust = TempData["Customer"] }, null)
     <br /> <br />
     @Html.ActionLink(" Back to Customer list", "Index", "Home")
 </p>

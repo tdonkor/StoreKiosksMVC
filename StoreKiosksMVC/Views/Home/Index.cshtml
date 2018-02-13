@@ -23,10 +23,10 @@
                     @Html.ActionLink(item.Customer, "Index","Stores", new { cust = item.Customer }, null)
                 </td>
           
-                <td>
+                @*<td>
                     @Html.ActionLink("Edit Customer", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Delete Customer", "Delete", new { id = item.Id })
-                </td>
+                </td>*@
             </tr>
 
          }
@@ -40,7 +40,7 @@
 
         @*<p><a class="btn btn-default" href="/Stores/Index"><b>List of Stores &raquo;</b></a></p>*@
         <br />
-         @Html.ActionLink("Add a new Customer", "Create")
+         @*@Html.ActionLink("Add a new Customer", "Create")*@
     </div>
 
 </div> 

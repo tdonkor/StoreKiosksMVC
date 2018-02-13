@@ -1,4 +1,6 @@
-﻿@model IEnumerable<StoreKiosksMVC.Models.Kiosk>
+﻿
+
+@model IEnumerable<StoreKiosksMVC.Models.Kiosk>
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +10,7 @@
 <h2>List of Store Kiosks</h2>
 
 <p>
-    @Html.ActionLink("Create a new Kiosk", "Create")
+    @Html.ActionLink("Create a new Kiosk", "Create", new { cust = TempData["Customer"] }, null)
 </p>
 <table class="table">
     <tr>
@@ -70,5 +72,5 @@
 </table>
 <div>
 
-    @Html.ActionLink("Back to Store", "Index", "Stores", new { cust = TempData["Customer"] }, null)
+    @Html.ActionLink("Back to Store list", "Index", "Stores", new { cust = TempData["Customer"] }, null)
 </div>
