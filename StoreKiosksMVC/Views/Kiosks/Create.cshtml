@@ -87,9 +87,9 @@
 </div>
 }
 
-    <div>
-        @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = ViewData["StoreId"] }, null)
-    </div>
+<div>
+    @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = ViewData["StoreId"], @cust = ViewData["Customer"] }, null)
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
