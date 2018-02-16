@@ -21,6 +21,28 @@ namespace StoreKiosksMVC.Controllers
 
             return View(model);
         }
+        // GET: Stores/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Stores/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Customer")] Customers customers)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customers.Add(customers);
+                db.SaveChanges();
+                return RedirectToAction($"Index", new { cust = customers.Customer });
+            }
+
+            return View(customers);
+        }
 
         public ActionResult About()
         {

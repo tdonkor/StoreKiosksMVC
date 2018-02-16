@@ -16,16 +16,17 @@ namespace StoreKiosksMVC.Controllers
 
 
         // GET: Stores
-        public ActionResult Index(string cust)
+        public ActionResult Index(string cust, string searchTerm = null)
         {
          
             TempData["Customer"] = cust;
+           
 
             var model =
                  from stores in db.Stores
-                     //  orderby stores.StoreName ascending
-                     // where (Id == null || stores.Customer.StartsWith(Id))
-                 where stores.Customer == cust
+                       orderby stores.StoreName ascending
+                      where ( (searchTerm == null || stores.StoreName.StartsWith(searchTerm)) && (stores.Customer == cust))
+              //  where stores.Customer == cust
                  select stores;
 
             
