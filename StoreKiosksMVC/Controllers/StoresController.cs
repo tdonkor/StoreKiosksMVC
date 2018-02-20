@@ -20,7 +20,6 @@ namespace StoreKiosksMVC.Controllers
         {
          
             TempData["Customer"] = cust;
-           
 
             var model =
                  from stores in db.Stores
