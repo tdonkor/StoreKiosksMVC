@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    "\\StoreKiosksMVC"
+    "",
+    "\\StoreKiosksMVC",
+    "\\StoreKiosksMVC\\Models"
   ],
+  "SelectedNode": "\\StoreKiosksMVC\\Models\\Kiosk.cs",
   "PreviewInSolutionExplorer": false
 }

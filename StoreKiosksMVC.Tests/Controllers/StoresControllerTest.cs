@@ -10,25 +10,21 @@ using StoreKiosksMVC.Models;
 
 namespace StoreKiosksMVC.Tests.Controllers
 {
-    [TestClass]
-    public class HomeControllerTest
+    class StoresControllerTest
     {
         private StoreKiosksDB db = new StoreKiosksDB();
 
         [TestMethod]
         public void Index()
         {
-
-
             // Arrange
             HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
-        
 
             // Assert
-            Assert.IsNotNull(result.Model);
+            Assert.IsNotNull(result);
         }
 
         [TestMethod]
