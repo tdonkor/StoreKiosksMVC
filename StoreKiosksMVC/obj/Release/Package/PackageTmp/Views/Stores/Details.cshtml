@@ -1,0 +1,114 @@
+﻿@model StoreKiosksMVC.Models.Store
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details for Store: @(ViewData["StoreName"].ToString().ToUpper())</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StoreName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoreName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoreNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoreNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoLiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoLiveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KioskNUCIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KioskNUCIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.County)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.County)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Postcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Postcode)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <br />
+    <img src="~/Content/Images/@(ViewData["StoreName"].ToString().ToUpper()).png" alt="store Image" width="600px" />
+    <br /> 
+</div>
+<p>
+    <br />
+    <ul>
+        <li>@Html.ActionLink("Edit Store Details", "Edit", new { id = Model.Id })</li>
+        @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
+    </ul>
+    <br />
+  
+</p>

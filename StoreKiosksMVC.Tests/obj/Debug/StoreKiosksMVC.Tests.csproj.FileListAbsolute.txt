@@ -33,7 +33,8 @@ c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\bin\Debu
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\bin\Debug\System.Web.WebPages.Razor.xml
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\bin\Debug\System.Web.Optimization.xml
-c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.csprojResolveAssemblyReference.cache
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.csproj.CoreCompileInputs.cache
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.dll
 c:\users\thomas donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.pdb
+C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.csprojAssemblyReference.cache
+C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC.Tests\obj\Debug\StoreKiosksMVC.Tests.csproj.CopyComplete

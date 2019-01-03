@@ -1,0 +1,77 @@
+﻿@model IEnumerable<StoreKiosksMVC.Models.Store>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Stores for @TempData["Customer"] </h2>
+
+<form method="get">
+    <input type ="hidden" name="cust" value= @TempData["Customer"] />
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Search by Name" />
+</form>
+
+
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayName("Store Id")
+        </th>*@
+        <th>
+            @Html.DisplayName("Store Name")
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.StoreNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GoLiveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KioskNUCIP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Postcode)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit Store", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Store Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Store Kiosks", "Index", "Kiosks", new { storeId = item.Id, cust = item.Customer }, null ) |
+                @Html.ActionLink("Delete Store", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Create a new Store", "Create", new { cust = TempData["Customer"] }, null)
+    <br /> <br />
+    @Html.ActionLink(" Back to Customer list", "Index", "Home")
+</p>
