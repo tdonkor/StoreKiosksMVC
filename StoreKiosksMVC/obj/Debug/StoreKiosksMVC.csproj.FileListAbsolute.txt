@@ -47,3 +47,4 @@ C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC\obj\Debug\Stor
 C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC\obj\Debug\StoreKiosksMVC.dll
 C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC\obj\Debug\StoreKiosksMVC.pdb
 C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC\obj\Debug\StoreKiosksMVC.csproj.CopyComplete
+C:\Users\Thomas Donkor\source\repos\StoreKiosksMVC\StoreKiosksMVC\obj\Debug\StoreKiosksMVC.csprojAssemblyReference.cache

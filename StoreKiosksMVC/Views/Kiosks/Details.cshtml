@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Kiosk Details</h2>
+<h2>Kiosk Details for kiosk: @Model.KioskId</h2>
 
 <div>
-    <h4>Kiosk</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,6 +48,12 @@
         <dd>
             @Html.DisplayFor(model => model.KioskName)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DoubleSided)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DoubleSided)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.IpAddress)
@@ -57,13 +62,34 @@
         <dd>
             @Html.DisplayFor(model => model.IpAddress)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.EFTSerialNumber)
+            @Html.DisplayNameFor(model => model.EFTSerialTID1)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EFTSerialNumber)
+            @Html.DisplayFor(model => model.EFTSerialTID1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialTID2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialTID2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialNumber1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialNumber1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialNumber2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialNumber2)
         </dd>
 
         <dt>
@@ -73,10 +99,31 @@
         <dd>
             @Html.DisplayFor(model => model.TPVNumber)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTMacAddress1)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.EFTMacAddress1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTMacAddress2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EFTMacAddress2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamViewerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeamViewerId)
+        </dd>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <br /><br />
-    @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = Model.StoreId , @cust = Model.Customer}, null)
+<p style="font-size:large">
+    <b>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) <br /><br />
+        @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = Model.StoreId, @cust = Model.Customer }, null)
+    </b>
 </p>
+

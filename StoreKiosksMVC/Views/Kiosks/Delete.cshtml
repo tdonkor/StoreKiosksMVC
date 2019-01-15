@@ -1,84 +1,133 @@
-﻿@model StoreKiosksMVC.Models.Kiosk
+﻿
+@model StoreKiosksMVC.Models.Kiosk
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete the Kiosk</h2>
-
 <font color="red">
-    <h3>Are you sure you want to delete kiosk: @Html.ValueFor(model => model.KioskName)?</h3></font>
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.KioskId)
-            </dt>
+    <h2>Delete the Kiosk</h2>
+    <h3>Are you sure you want to delete kiosk: @Model.KioskId</h3>
+</font>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KioskId)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.KioskId)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.KioskId)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.StoreId)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.StoreId)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.StoreId)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.StoreId)
+        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.SerialNumber)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.SerialNumber)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DoubleSided)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.KioskName)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DoubleSided)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.KioskName)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KioskName)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.IpAddress)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KioskName)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.IpAddress)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.EFTSerialNumber)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IpAddress)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.EFTSerialNumber)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialTID1)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.TPVNumber)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialTID1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialTID2)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.TPVNumber)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialTID2)
+        </dd>
 
-        </dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialNumber1)
+        </dt>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialNumber1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTSerialNumber2)
+        </dt>
 
-            <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" />
-                    <br /><br />
+        <dd>
+            @Html.DisplayFor(model => model.EFTSerialNumber2)
+        </dd>
 
-                    @Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = Model.StoreId, @cust = Model.Customer }, null)
+        <dt>
+            @Html.DisplayNameFor(model => model.TPVNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TPVNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTMacAddress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFTMacAddress1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EFTMacAddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EFTMacAddress2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamViewerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeamViewerId)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="font-size:large">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <br /><br />
+
+            <b>@Html.ActionLink("Back to Store Kiosks List", "Index", "Kiosks", new { @StoreId = Model.StoreId, @cust = Model.Customer }, null)</b>
+        </div>
+    }
 </div>
-        }
-    </div>
