@@ -223,6 +223,10 @@
     <Content Include="Views\Kiosks\Edit.cshtml" />
     <Content Include="Views\Kiosks\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\ListNotEmpty.cshtml" />
+    <Content Include="Views\Stores\ListNotEmpty.cshtml" />
+    <Content Include="Views\Stores\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

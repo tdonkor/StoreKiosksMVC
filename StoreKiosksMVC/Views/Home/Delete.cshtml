@@ -1,0 +1,35 @@
+﻿@model StoreKiosksMVC.Models.Customers
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<font color="red">
+    <h3>Are you sure you want to delete customer: <b>@Model.Customer?</b></h3>
+</font>
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="font-size:large">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="font-size:large">
+            <input type="submit" value="Delete" class="btn badge-default" />
+            <br /><br />
+            <b>@Html.ActionLink("Back to List", "Index")</b>
+        </div>
+    }
+</div>

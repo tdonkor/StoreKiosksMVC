@@ -1,10 +1,9 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using StoreKiosksMVC.Models;
 
@@ -18,20 +17,35 @@ namespace StoreKiosksMVC.Controllers
         // GET: Stores
         public ActionResult Index(string cust, string searchTerm = null)
         {
-         
+
             TempData["Customer"] = cust;
 
             var model =
                  from stores in db.Stores
-                       orderby stores.StoreName ascending
-                      where ( (searchTerm == null || stores.StoreName.StartsWith(searchTerm)) && (stores.Customer == cust))
-              //  where stores.Customer == cust
+                 orderby stores.StoreName ascending
+                 where ((searchTerm == null || stores.StoreName.StartsWith(searchTerm)) && (stores.Customer == cust))
                  select stores;
 
-            
             return View(model);
+        }
 
-            //return View(db.Stores.ToList());
+        public ActionResult List(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Store store = db.Stores.Find(id);
+
+            ViewData["StoreName"] = store.StoreName.ToUpper();
+            ViewData["Customer"] = store.Customer;
+
+            if (store == null)
+            {
+                return HttpNotFound();
+            }
+            return View(store);
+
         }
 
         // GET: Stores/Details/5
@@ -42,7 +56,7 @@ namespace StoreKiosksMVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Store store = db.Stores.Find(id);
-         
+
             ViewData["StoreName"] = store.StoreName.ToUpper();
             ViewData["Customer"] = store.Customer;
 
@@ -76,12 +90,12 @@ namespace StoreKiosksMVC.Controllers
             {
                 db.Stores.Add(store);
                 db.SaveChanges();
-                return RedirectToAction($"Index", new {cust = store.Customer});
+                return RedirectToAction($"Index", new { cust = store.Customer });
             }
 
             return View(store);
         }
-        
+
         // GET: Stores/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -105,7 +119,7 @@ namespace StoreKiosksMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StoreName,Customer,StoreNumber,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,County,Postcode")] Store store)
+        public ActionResult Edit([Bind(Include = "Id,StoreName,Customer,StoreNumber,InstallationDate,GoLiveDate,KioskNUCIP,PhoneNumber,Address1,Address2,City,County,Postcode")] Store store)
         {
             if (ModelState.IsValid)
             {
@@ -127,9 +141,28 @@ namespace StoreKiosksMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            //check if store list is empty first before deletion
+            //get Store
             Store store = db.Stores.Find(id);
+
+            //get store details to pas into View
             ViewData["StoreName"] = store.StoreName;
             ViewData["Customer"] = store.Customer;
+
+
+            //get store list of kiosks before deletion
+            List<Kiosk> ksks = new List<Kiosk>();
+            ksks = (from kiosk in db.Kiosks
+                    where kiosk.StoreId == id
+                    select kiosk).ToList();
+
+            // if store list not empty 
+            // redirect to different view 
+            if (ksks.Count != 0)
+            {
+                return RedirectToAction($"ListNotEmpty");
+            }
 
             if (store == null)
             {
@@ -146,7 +179,12 @@ namespace StoreKiosksMVC.Controllers
             Store store = db.Stores.Find(id);
             db.Stores.Remove(store);
             db.SaveChanges();
-            return RedirectToAction($"Index", new {cust = store.Customer});
+            return RedirectToAction($"Index", new { cust = store.Customer });
+        }
+
+        public ActionResult ListNotEmpty()
+        {
+            return View();
         }
 
         protected override void Dispose(bool disposing)
@@ -165,7 +203,7 @@ namespace StoreKiosksMVC.Controllers
         /// <returns></returns>
         string TrimString(string str)
         {
-            return str.Trim(); 
+            return str.Trim();
         }
     }
 }

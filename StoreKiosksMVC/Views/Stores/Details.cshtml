@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details for Store: @(ViewData["StoreName"].ToString().ToUpper())</h2>
+<h2>Details for Store: @Model.StoreName</h2>
 
 <div>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-size:large">
         <dt>
             @Html.DisplayNameFor(model => model.StoreName)
         </dt>
@@ -33,6 +33,13 @@
             @Html.DisplayFor(model => model.StoreNumber)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.InstallationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstallationDate)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.GoLiveDate)
         </dt>
@@ -100,15 +107,16 @@
 </div>
 <div>
     <br />
-    <img src="~/Content/Images/@(ViewData["StoreName"].ToString().ToUpper()).png" alt="store Image" width="600px" />
-    <br /> 
+    <img src="~/Content/Images/@Model.StoreName.ToString().ToUpper()).png" alt="store Image" width="600px" />
+    <br />
 </div>
-<p>
+<p style="font-size:large">
+    <b>
+        <br />
+     
+            @Html.ActionLink("Edit Store Details", "Edit", new { id = Model.Id })<br /><br />
+            @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
+    </b>
     <br />
-    <ul>
-        <li>@Html.ActionLink("Edit Store Details", "Edit", new { id = Model.Id })</li>
-        @Html.ActionLink("Back to Store List", "Index", "Stores", new { @cust = ViewData["Customer"] }, null)
-    </ul>
-    <br />
-  
+
 </p>

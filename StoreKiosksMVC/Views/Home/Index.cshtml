@@ -7,40 +7,36 @@
 <div class="jumbotron">
 
     <h1>Acrelec Kiosk Tracker</h1>
-
-    <!-- <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p> -->
 </div>
 <div>
     <h2>Customer List</h2>
+    <div style="overflow:auto; height:340px;">
+        <table class="table table-striped" style="font-size:large">
 
-    <table class="table">
-        
-        @foreach (var item in Model)
-       {
-            <tr>
-                <td>
-                   
-                    @Html.ActionLink(item.Customer, "Index","Stores", new { cust = item.Customer }, null)
-                </td>
-          
-                @*<td>
-                    @Html.ActionLink("Edit Customer", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Delete Customer", "Delete", new { id = item.Id })
-                </td>*@
-            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
 
-         }
+                        @Html.ActionLink(item.Customer, "Index", "Stores", new { cust = item.Customer }, null)
+                    </td>
 
-    </table>
+                    <td>
+                        @Html.ActionLink("Edit Customer", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete Customer", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+
+            }
+
+        </table>
+    </div>
 </div>
 
-<div class="row">
+<div class="row" style="font-size:large">
     <div class="col-md-4">
-        @*<h2>Stores</h2>*@
-
-        @*<p><a class="btn btn-default" href="/Stores/Index"><b>List of Stores &raquo;</b></a></p>*@
         <br />
-         @Html.ActionLink("Add a new Customer", "Create")
+        <b>@Html.ActionLink("Add a new Customer", "Create")</b>
     </div>
 
-</div> 
+</div>
