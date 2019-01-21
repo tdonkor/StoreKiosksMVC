@@ -78,8 +78,7 @@ namespace StoreKiosksMVC.Controllers
                     where store.Customer == custName.Customer.ToString()
                     select store).ToList();
 
-            // if store list not empty 
-            // redirect to different view 
+            // if store list not empty redirect to different view 
             if (strs.Count != 0)
             {
                 return RedirectToAction($"ListNotEmpty");
@@ -106,6 +105,38 @@ namespace StoreKiosksMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        // GET: Stores/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customers customers = db.Customers.Find(id);
+
+            if (customers == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customers);
+        }
+
+
+        // POST: Stores/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Customer")] Customers customers)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(customers).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction($"Index");
+            }
+            return View(customers);
+        }
 
         public ActionResult ListNotEmpty()
         {
