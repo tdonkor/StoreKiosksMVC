@@ -73,13 +73,7 @@ namespace StoreKiosksMVC.Controllers
         public ActionResult Create([Bind(Include = "Id,KioskId,StoreId,Customer,SerialNumber,DoubleSided,KioskName,IpAddress," +
             "EFTSerialTID1, EFTSerialTID2, EFTSerialTID1,EFTSerialTID2,TPVNumber,EFTMacAddress1,EFTMacAddress2,TeamViewerId")] Kiosk kiosk)
         {
-            //kiosk.Id = kiosk.KioskId;
-
-            // Don't create if Kiosk name is blank
-            //if ( (string.IsNullOrEmpty(kiosk.KioskName)))
-            //{
-            //    return RedirectToAction("Index", "Stores");
-            //}
+          
             ViewData["Customer"] = kiosk.Customer;
             if (ModelState.IsValid)
             {

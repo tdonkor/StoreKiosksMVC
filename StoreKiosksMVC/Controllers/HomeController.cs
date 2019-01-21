@@ -1,6 +1,7 @@
 ﻿using StoreKiosksMVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -59,10 +60,7 @@ namespace StoreKiosksMVC.Controllers
             return View();
         }
 
-        public ActionResult Edit()
-        {
-            return View();
-        }
+        
 
         public ActionResult Delete(int? id)
         {
@@ -113,6 +111,16 @@ namespace StoreKiosksMVC.Controllers
         {
 
             return View();
+        }
+
+        /// <summary>
+        /// Trim the string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        string TrimString(string str)
+        {
+            return str.Trim();
         }
     }
 }
